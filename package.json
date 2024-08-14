@@ -1,0 +1,40 @@
+{
+    "name": "json-data-server",
+    "version": "1.0.0",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "build": "tsc && tsc-alias",
+        "start": "node ./build/src/index.js",
+        "k6": "export $(cat ./tests-k6/.env | xargs) && npm run build && k6 run ./build/tests-k6/index.js",
+        "lint-format-fix": "npm run lint-fix && npm run format-fix",
+        "lint-fix": "eslint --fix .",
+        "format-fix": "prettier --write ."
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "devDependencies": {
+        "@types/cors": "^2.8.17",
+        "@types/express": "^4.17.21",
+        "@types/joi": "^17.2.3",
+        "@types/k6": "^0.52.0",
+        "@types/uuid": "^10.0.0",
+        "eslint": "^8.56.0",
+        "eslint-config-prettier": "^9.1.0",
+        "globals": "^15.9.0",
+        "prettier": "^3.3.3",
+        "tsc-alias": "^1.8.10",
+        "tsconfig-paths": "^4.2.0",
+        "typescript": "^5.5.4",
+        "typescript-eslint": "^8.0.1"
+    },
+    "dependencies": {
+        "@aws-sdk/client-s3": "^3.627.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "uuid": "^10.0.0"
+    }
+}

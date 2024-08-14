@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "module": "es2022",
+        "outDir": "build",
+        "esModuleInterop": true,
+        "lib": ["ES2017", "DOM", "ES2021.String", "es2020"],
+        "preserveConstEnums": true,
+        "moduleResolution": "node",
+        "strict": true,
+        "inlineSourceMap": true,
+        "types": ["node"],
+        "resolveJsonModule": true,
+        "baseUrl": ".",
+        "paths": {
+            "@routes/*": ["src/routes/*"],
+            "@controllers/*": ["src/controllers/*"],
+            "@datastore/*": ["src/datastore/*"],
+            "@helpers/*": ["src/helpers/*"],
+            "@utils/*": ["src/utils/*"],
+            "@k6/container/*": ["tests-k6/container/*"],
+            "@k6/context/*": ["tests-k6/context/*"],
+            "@k6/features/*": ["tests-k6/features/*"],
+            "@k6/helpers/*": ["tests-k6/helpers/*"],
+            "@k6/steps/*": ["tests-k6/steps/*"],
+            "@k6/env/*": ["tests-k6/env/*"],
+            "@/*": ["*"]
+        }
+    },
+    "include": ["src/**/*", "tests-k6/**/*"],
+    "exclude": ["node_modules", "build"]
+}
