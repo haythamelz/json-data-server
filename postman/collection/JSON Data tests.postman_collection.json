@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "fc1eed35-cd2c-48f2-908a-5f295f36b892",
+		"name": "JSON Data tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34035054"
+	},
+	"item": [
+		{
+			"name": "Search for apps",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{jsonDataApiUrl}}/json-data/app",
+					"host": [
+						"{{jsonDataApiUrl}}"
+					],
+					"path": [
+						"json-data",
+						"app"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create app",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"pm.environment.set(\"appId\", jsonData.appId);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"appName\": \"AppNameForDemo\",\r\n    \"appPath\": \"./app/path\",\r\n    \"owner\": \"Test\",\r\n    \"isValid\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{jsonDataApiUrl}}/json-data/create-app",
+					"host": [
+						"{{jsonDataApiUrl}}"
+					],
+					"path": [
+						"json-data",
+						"create-app"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search app by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{jsonDataApiUrl}}/json-data/app/{{appId}}",
+					"host": [
+						"{{jsonDataApiUrl}}"
+					],
+					"path": [
+						"json-data",
+						"app",
+						"{{appId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search updated app by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{jsonDataApiUrl}}/json-data/app/{{updatedAppId}}",
+					"host": [
+						"{{jsonDataApiUrl}}"
+					],
+					"path": [
+						"json-data",
+						"app",
+						"{{updatedAppId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update app",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json();\r",
+							"pm.environment.set(\"updatedAppId\", jsonData.appId);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"owner\": \"Developer\",\r\n    \"isValid\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{jsonDataApiUrl}}/json-data/update-app/{{appId}}",
+					"host": [
+						"{{jsonDataApiUrl}}"
+					],
+					"path": [
+						"json-data",
+						"update-app",
+						"{{appId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete app",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{jsonDataApiUrl}}/json-data/delete-app/{{updatedAppId}}",
+					"host": [
+						"{{jsonDataApiUrl}}"
+					],
+					"path": [
+						"json-data",
+						"delete-app",
+						"{{updatedAppId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
