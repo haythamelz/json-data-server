@@ -1,10 +1,10 @@
-# json-data-service
+# JSON Data Service
 
 ## Quick Start up with local integration test run
 
-1) Ensure to have an AWS S3 bucket but don't worry about uploading and object
-2) Define environment variables as explained under `Local Setup` and choose an object name in the `CONFIG_KEY` variable
-3) docker compose up the solution as described in `Local Setup`
+1) Ensure to have an AWS S3 bucket but don't worry about uploading an object.
+2) Define environment variables as explained under `Local Setup` and choose an object name in the `CONFIG_KEY` variable.
+3) docker compose up the solution as described in `Local Setup`.
 4) Run k6 integration tests with the command defined under `k6 Integration tests`. If environment variables aren't specified then `EXECUTION` and `OPTIONS_SET` have default values of `local` and `integration` respectively. 
 
 ## Local Setup
