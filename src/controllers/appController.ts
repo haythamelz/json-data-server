@@ -49,7 +49,6 @@ export const createApp = async (req: Request, res: Response) => {
 
 export const updateApp = async (req: Request, res: Response) => {
     const validator = validateUpdateAppData(req.body)
-    console.log(validator.error)
     if (validator.error) {
         return res.status(400).send({ error: validator.error.message })
     }
@@ -62,14 +61,13 @@ export const updateApp = async (req: Request, res: Response) => {
     const index = jsonData.apps.indexOf(filterAppById)
     const updatedAppId = uuidv4()
 
-    if (~index)
-        jsonData.apps[index] = {
-            appId: updatedAppId,
-            appName: filterAppById.appName,
-            appPath: filterAppById.appPath,
-            owner,
-            isValid: isValid ?? false,
-        }
+    jsonData.apps[index] = {
+        appId: updatedAppId,
+        appName: filterAppById.appName,
+        appPath: filterAppById.appPath,
+        owner,
+        isValid: isValid ?? false,
+    }
 
     await updateJsonData(JSON.stringify(jsonData))
 
@@ -83,8 +81,7 @@ export const deleteApp = async (req: Request, res: Response) => {
     if (!filterAppById) return res.status(404).send('Not found')
 
     const index = jsonData.apps.indexOf(filterAppById)
-
-    if (~index) jsonData.apps.splice(index, 1)
+    jsonData.apps.splice(index, 1)
 
     await updateJsonData(JSON.stringify(jsonData))
 
